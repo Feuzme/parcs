@@ -3,6 +3,7 @@ package fr.feuzme.spring.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import fr.feuzme.spring.services.GenericService;
 
 @RestController
 @RequestMapping("parcs")
+@CrossOrigin
 public class ParcController {
 	@Autowired
 	private GenericService<Parc> service;
@@ -32,7 +34,7 @@ public class ParcController {
 	}
 	
 	@PostMapping()
-	public Parc save(Parc parc) {
+	public Parc save(@RequestBody Parc parc) {
 		return this.service.save(parc);
 	}
 	
